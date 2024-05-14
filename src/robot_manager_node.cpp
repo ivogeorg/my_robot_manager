@@ -4,11 +4,11 @@
 int main(int argc, char **argv) {
     ros::init(argc, argv, "my_robot_manager_node");
     
-    RobotManager robot;
-    robot.robot_name = "ToyBot";
-    robot.robot_model = "TurtleBot3";
+    ros::NodeHandle nh;
+    RobotManager robot(&nh, "/robot1/odom", "ToyBot", "TurtleBot3");
 
     robot.print_specifications();
+    ros::spin();
 
     return 0;
 }
