@@ -4,12 +4,16 @@
 
 using namespace std;
 
+int RobotManager::robot_count = 0;
+
 RobotManager::RobotManager(ros::NodeHandle *nh_, string topic_name,
                            string robot_name, string robot_model)
     : odometry_topic{topic_name}, robot_name{robot_name}, robot_model{
                                                               robot_model} {
   odom_subscriber =
       nh_->subscribe(odometry_topic, 1000, &RobotManager::odom_callback, this);
+      robot_count ++;
+      ROS_INFO("Robot %d created.", robot_count);
 }
 
 void RobotManager::print_specifications() {

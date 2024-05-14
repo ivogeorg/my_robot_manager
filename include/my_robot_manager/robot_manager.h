@@ -16,6 +16,8 @@ class RobotManager {
   string odometry_topic = "/odom";
 
 public:
+  static int robot_count;
+
   RobotManager(ros::NodeHandle *nh_, string topic_name, string robot_name,
                string robot_model);
   void print_specifications();
